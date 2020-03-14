@@ -1,2 +1,2 @@
 # diary-graph
-Kepp diaries in just a few minutes.
+Keep diaries in just a few minutes.
