@@ -1,6 +1,6 @@
 # diary_graph_mobile
 
-Kepp diaries in just a few minutes.
+Keep diaries in just a few minutes.
 
 ## Getting Started
 
