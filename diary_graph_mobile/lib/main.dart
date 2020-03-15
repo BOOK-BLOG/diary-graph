@@ -153,7 +153,7 @@ class _HomeState extends State<Home> {
             elevation: 0.0,
             items: [
               BottomNavigationBarItem(
-                icon: Icon(Icons.edit),
+                icon: Icon(Icons.add),
                 title: Text(Localizations.of(context, AppLocalizations).recent),
               ),
               BottomNavigationBarItem(
@@ -162,7 +162,7 @@ class _HomeState extends State<Home> {
                     Text(Localizations.of(context, AppLocalizations).memories),
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.label),
+                icon: Icon(Icons.search),
                 title: Text(Localizations.of(context, AppLocalizations).search),
               ),
               BottomNavigationBarItem(
@@ -217,7 +217,7 @@ class _CupertinoAppBottomNavigationBarState
       tabBar: CupertinoTabBar(
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.edit),
+            icon: Icon(Icons.add),
             title: Text(Localizations.of(context, AppLocalizations).recent),
           ),
           BottomNavigationBarItem(
@@ -225,7 +225,7 @@ class _CupertinoAppBottomNavigationBarState
             title: Text(Localizations.of(context, AppLocalizations).memories),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.label),
+            icon: Icon(Icons.search),
             title: Text(Localizations.of(context, AppLocalizations).search),
           ),
           BottomNavigationBarItem(

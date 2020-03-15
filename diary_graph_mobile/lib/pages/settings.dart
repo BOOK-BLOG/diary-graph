@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../localizations.dart';
 import '../themestyle.dart';
 
@@ -80,6 +81,12 @@ class _ThemeStyleSelectorState extends State<ThemeStyleSelector> {
             onChanged: (selectedValue) {
               setState(() {
                 _themeStyleValue = selectedValue;
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return ShowThemeStyleApplyDialog();
+                  },
+                );
               });
             },
           ),
@@ -97,6 +104,12 @@ class _ThemeStyleSelectorState extends State<ThemeStyleSelector> {
                 break;
               default:
             }
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return ShowThemeStyleApplyDialog();
+              },
+            );
           },
         );
         break;
@@ -127,29 +140,7 @@ class _ThemeStyleSelectorState extends State<ThemeStyleSelector> {
                   showCupertinoModalPopup(
                     context: context,
                     builder: (context) {
-                      return CupertinoActionSheet(
-                        title: Text(Localizations.of(context, AppLocalizations)
-                            .applyTheTheme),
-                        message: Text(
-                            Localizations.of(context, AppLocalizations)
-                                .restartTheAppToApplyTheTheme),
-                        cancelButton: CupertinoActionSheetAction(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: Text(
-                              Localizations.of(context, AppLocalizations)
-                                  .restartLater),
-                        ),
-                        actions: <Widget>[
-                          CupertinoActionSheetAction(
-                            onPressed: () {},
-                            child: Text(
-                                Localizations.of(context, AppLocalizations)
-                                    .exitAndRestartManually),
-                          ),
-                        ],
-                      );
+                      return ShowThemeStyleApplyDialog();
                     },
                   );
                 });
@@ -169,8 +160,79 @@ class _ThemeStyleSelectorState extends State<ThemeStyleSelector> {
                   break;
                 default:
               }
+              showCupertinoModalPopup(
+                context: context,
+                builder: (context) {
+                  return ShowThemeStyleApplyDialog();
+                },
+              );
             },
           ),
+        );
+        break;
+      default:
+    }
+  }
+}
+
+// Function ShowThemeStyleApplyDialog = (){};
+
+class ShowThemeStyleApplyDialog extends StatefulWidget {
+  @override
+  _ShowThemeStyleApplyDialogState createState() =>
+      _ShowThemeStyleApplyDialogState();
+}
+
+class _ShowThemeStyleApplyDialogState extends State<ShowThemeStyleApplyDialog> {
+  @override
+  Widget build(BuildContext context) {
+    switch (themeStyle) {
+      case "material":
+        return AlertDialog(
+          title:
+              Text(Localizations.of(context, AppLocalizations).applyTheTheme),
+          content: Text(Localizations.of(context, AppLocalizations)
+              .restartTheAppToApplyTheTheme),
+          actions: <Widget>[
+            FlatButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                  Localizations.of(context, AppLocalizations).restartLater),
+            ),
+            FlatButton(
+              onPressed: () {
+                SystemNavigator.pop(animated: true);
+              },
+              child: Text(Localizations.of(context, AppLocalizations)
+                  .exitAndRestartManually),
+            ),
+          ],
+        );
+        break;
+      case "cupertino":
+        return CupertinoActionSheet(
+          title:
+              Text(Localizations.of(context, AppLocalizations).applyTheTheme),
+          message: Text(Localizations.of(context, AppLocalizations)
+              .restartTheAppToApplyTheTheme),
+          cancelButton: CupertinoActionSheetAction(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child:
+                Text(Localizations.of(context, AppLocalizations).restartLater),
+          ),
+          actions: <Widget>[
+            CupertinoActionSheetAction(
+              onPressed: () {
+                SystemNavigator.pop(animated: true);
+              },
+              child: Text(Localizations.of(context, AppLocalizations)
+                  .exitAndRestartManually),
+            ),
+          ],
         );
         break;
       default:
@@ -247,20 +309,4 @@ class _ShowQuickActionButtonSwitchState
       default:
     }
   }
-}
-
-abstract class Styles {
-  static const TextStyle productRowItemName = TextStyle(
-    color: Color.fromRGBO(0, 0, 0, 0.8),
-    fontSize: 18,
-    fontStyle: FontStyle.normal,
-    fontWeight: FontWeight.normal,
-  );
-
-  static const TextStyle productRowTotal = TextStyle(
-    color: Color.fromRGBO(0, 0, 0, 0.8),
-    fontSize: 18,
-    fontStyle: FontStyle.normal,
-    fontWeight: FontWeight.bold,
-  );
 }
