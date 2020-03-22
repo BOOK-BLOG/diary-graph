@@ -11,9 +11,9 @@ import {
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { ellipse, square, triangle } from 'ionicons/icons';
-import AddPage from './pages/AddPage';
+import RecentPage from './pages/RecentPage';
 import MemoriesPage from './pages/MemoriesPage';
-import Tab3 from './pages/Tab3';
+import SearchPage from './pages/SearchPage';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -39,13 +39,13 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route path="/AddPage" component={AddPage} exact={true} />
+          <Route path="/RecentPage" component={RecentPage} exact={true} />
           <Route path="/MemoriesPage" component={MemoriesPage} exact={true} />
-          <Route path="/tab3" component={Tab3} />
-          <Route path="/" render={() => <Redirect to="/AddPage" />} exact={true} />
+          <Route path="/SearchPage" component={SearchPage} />
+          <Route path="/" render={() => <Redirect to="/RecentPage" />} exact={true} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
-          <IonTabButton tab="AddPage" href="/AddPage">
+          <IonTabButton tab="RecentPage" href="/RecentPage">
             <IonIcon icon={triangle} />
             <IonLabel>Recent</IonLabel>
           </IonTabButton>
@@ -53,9 +53,9 @@ const App: React.FC = () => (
             <IonIcon icon={ellipse} />
             <IonLabel>Memories</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
+          <IonTabButton tab="SearchPage" href="/SearchPage">
             <IonIcon icon={square} />
-            <IonLabel>Tab 3</IonLabel>
+            <IonLabel>Search</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>

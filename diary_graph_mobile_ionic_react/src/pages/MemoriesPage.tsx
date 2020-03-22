@@ -1,26 +1,26 @@
 import React from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
-import './AddPage.css';
+import './MemoriesPage.css';
 
-const AddPage: React.FC = () => {
+const MemoriesPage: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Tab 1</IonTitle>
+          <IonTitle>Memories</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Tab 1</IonTitle>
+            <IonTitle size="large">Memories</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name="Tab 1 page" />
+        <ExploreContainer name="MemoriesPage" />
       </IonContent>
     </IonPage>
   );
 };
 
-export default AddPage;
+export default MemoriesPage;

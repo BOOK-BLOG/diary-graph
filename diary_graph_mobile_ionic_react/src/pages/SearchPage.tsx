@@ -17,7 +17,7 @@ const SearchPage: React.FC = () => {
             <IonTitle size="large">Search</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name="Tab 3 page" />
+        <ExploreContainer name="SearchPage" />
       </IonContent>
     </IonPage>
   );
