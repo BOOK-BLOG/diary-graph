@@ -1,7 +1,0 @@
-{
-  "name": "diary_graph_mobile",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "react"
-}
