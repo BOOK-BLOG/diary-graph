@@ -13,12 +13,7 @@ class _RecentPageState extends State<RecentPage> {
   Widget build(BuildContext context) {
     switch (themeStyle) {
       case 'material':
-        return Center(
-          child: FloatingActionButton(
-            child: Icon(Icons.photo_camera),
-            onPressed: () {},
-          ),
-        );
+        return Container();
         break;
       case 'cupertino':
         return CupertinoPageScaffold(

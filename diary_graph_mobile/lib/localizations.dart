@@ -7,16 +7,12 @@ class AppLocalizations {
   AppLocalizations(this.locale);
 
   static Map<String, Map<String, String>> _locallized = {
-    // 'noction': {
-    //   'en': 'Noction',
-    //   'zh': 'Noction',
-    // },
     'diarygraph': {
       'en': 'Diary Graph',
       'zh': 'Diary Graph',
     },
     'recent': {
-      'en': 'recent',
+      'en': 'Recent',
       'zh': '最近',
     },
     'memories': {
@@ -39,7 +35,6 @@ class AppLocalizations {
       'en': 'Cancel',
       'zh': '取消',
     },
-
     'applyTheTheme': {
       'en': 'Apply The Theme',
       'zh': '应用主题',

@@ -1,15 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:path_provider/path_provider.dart';
 import 'localizations.dart';
 import 'themestyle.dart';
+import 'file_system.dart';
+import 'start_up.dart';
 import 'pages/recent.dart';
 import 'pages/memories.dart';
 import 'pages/search.dart';
 import 'pages/settings.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  getPath();
+  startUp();
+  runApp(MyApp());
+}
 
 class MyApp extends StatefulWidget {
   @override
@@ -17,13 +23,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   @override
   Widget build(BuildContext context) {
     switch (themeStyle) {
       case 'material':
         return MaterialApp(
-          locale: Locale('zh', 'CN'),
+          locale: Locale('en', 'US'),
           localizationsDelegates: [
             AppLocalizationsDelegate(),
             GlobalMaterialLocalizations.delegate,
@@ -41,7 +46,7 @@ class _MyAppState extends State<MyApp> {
         break;
       case 'cupertino':
         return CupertinoApp(
-          locale: Locale('zh', 'CN'),
+          locale: Locale('en', 'US'),
           localizationsDelegates: [
             AppLocalizationsDelegate(),
             GlobalMaterialLocalizations.delegate,
@@ -145,6 +150,15 @@ class _HomeState extends State<Home> {
           appBar: _materialAppBar(),
           body: Center(
             child: _pages.elementAt(_currentIndex),
+          ),
+          floatingActionButton: Visibility(
+            visible: true,
+            child: FloatingActionButton(
+              child: Icon(Icons.add_a_photo),
+              onPressed: () {
+                startUpJson();
+              },
+            ),
           ),
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: _currentIndex,

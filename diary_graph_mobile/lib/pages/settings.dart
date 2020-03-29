@@ -1,8 +1,9 @@
+import 'package:diary_graph_mobile/file_system.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import '../localizations.dart';
 import '../themestyle.dart';
+import '../start_up.dart';
 
 String _themeStyleValue = themeStyle;
 bool _showQuickActionButton = false;
@@ -17,16 +18,11 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     switch (themeStyle) {
       case 'material':
-        return SingleChildScrollView(
-          child: Container(
-            margin: EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 8.0),
-            child: Column(
-              children: <Widget>[
-                ThemeStyleSelector(),
-                ShowQuickActionButtonSwitch(),
-              ],
-            ),
-          ),
+        return ListView(
+          children: <Widget>[
+            ThemeStyleSelector(),
+            ShowQuickActionButtonSwitch(),
+          ],
         );
         break;
       case 'cupertino':
@@ -69,11 +65,11 @@ class _ThemeStyleSelectorState extends State<ThemeStyleSelector> {
           trailing: DropdownButton(
             items: <DropdownMenuItem<String>>[
               DropdownMenuItem(
-                child: Text('material'),
+                child: Text('Material'),
                 value: 'material',
               ),
               DropdownMenuItem(
-                child: Text('cupertino'),
+                child: Text('Cupertino'),
                 value: 'cupertino',
               ),
             ],
@@ -201,13 +197,6 @@ class _ShowThemeStyleApplyDialogState extends State<ShowThemeStyleApplyDialog> {
               child: Text(
                   Localizations.of(context, AppLocalizations).restartLater),
             ),
-            FlatButton(
-              onPressed: () {
-                SystemNavigator.pop(animated: true);
-              },
-              child: Text(Localizations.of(context, AppLocalizations)
-                  .exitAndRestartManually),
-            ),
           ],
         );
         break;
@@ -224,15 +213,6 @@ class _ShowThemeStyleApplyDialogState extends State<ShowThemeStyleApplyDialog> {
             child:
                 Text(Localizations.of(context, AppLocalizations).restartLater),
           ),
-          actions: <Widget>[
-            CupertinoActionSheetAction(
-              onPressed: () {
-                SystemNavigator.pop(animated: true);
-              },
-              child: Text(Localizations.of(context, AppLocalizations)
-                  .exitAndRestartManually),
-            ),
-          ],
         );
         break;
       default:
