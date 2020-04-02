@@ -156,7 +156,7 @@ class _HomeState extends State<Home> {
             child: FloatingActionButton(
               child: Icon(Icons.add_a_photo),
               onPressed: () {
-                startUpJson();
+                startUp();
               },
             ),
           ),
