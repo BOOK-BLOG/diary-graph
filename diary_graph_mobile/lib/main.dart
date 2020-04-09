@@ -13,7 +13,7 @@ import 'pages/settings.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   getPath();
-  startUp();
+  // startUp();
   runApp(MyApp());
 }
 
@@ -36,6 +36,8 @@ class _MyAppState extends State<MyApp> {
             GlobalWidgetsLocalizations.delegate,
           ],
           debugShowCheckedModeBanner: false,
+          theme: ThemeData(),
+          darkTheme: ThemeData.dark(),
           title: 'Diary Graph',
           home: Home(),
           supportedLocales: <Locale>[
@@ -54,6 +56,7 @@ class _MyAppState extends State<MyApp> {
             GlobalWidgetsLocalizations.delegate,
           ],
           debugShowCheckedModeBanner: false,
+          theme: CupertinoThemeData(),
           title: 'Diary Graph',
           home: Home(),
           supportedLocales: <Locale>[
@@ -156,7 +159,7 @@ class _HomeState extends State<Home> {
             child: FloatingActionButton(
               child: Icon(Icons.add_a_photo),
               onPressed: () {
-                startUp();
+                // startUp();
               },
             ),
           ),

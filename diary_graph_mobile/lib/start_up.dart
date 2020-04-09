@@ -18,6 +18,6 @@ import 'file_system.dart';
 //   return startUpJsonContent.toString();
 // }
 
-startUp() {
-  // debugPrint(startUpJson());
-}
+// startUp() {
+//   debugPrint(startUpJson());
+// }
