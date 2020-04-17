@@ -9,11 +9,12 @@ import 'pages/recent.dart';
 import 'pages/memories.dart';
 import 'pages/search.dart';
 import 'pages/settings.dart';
+import 'package:path_provider/path_provider.dart';
+import 'dart:io';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   getPath();
-  // startUp();
   runApp(MyApp());
 }
 
@@ -145,8 +146,58 @@ class _HomeState extends State<Home> {
     }
   }
 
+  var fileTf;
+  var onboarding = false;
+
+  startUp() async {
+    var startUpJsonFile;
+    if (!onboarding) {
+      Directory appDocDir = await getApplicationDocumentsDirectory();
+      startUpJsonFile = File(appDocDir.path + "/data/start_up.json");
+      start
+      if (await startUpJsonFile.exists()) {
+        var startUpJsonStr = await startUpJsonFile.readAsString();
+        debugPrint(startUpJsonStr);
+      } else {
+        Navigator.push(
+          context,
+          CupertinoPageRoute(
+              builder: (BuildContext context) => Scaffold(
+                      body: Stack(
+                    children: <Widget>[
+                      Center(
+                        child: Text("Welcome to Diary Graph"),
+                      ),
+                      Positioned(
+                        left: 16.0,
+                        bottom: 32.0,
+                        right: 16.0,
+                        child: CupertinoButton.filled(
+                          child: Text("Get Started"),
+                          onPressed: () {
+                            Navigator.pop(context);
+                            startUpJsonFile.createSync();
+                            startUpJsonFile
+                                .writeAsString("{\"onboarding\": false}");
+                          },
+                        ),
+                      ),
+                    ],
+                  )),
+              fullscreenDialog: true),
+        );
+      }
+    }
+    onboarding = true;
+    fileTf = startUpJsonFile.existsSync();
+
+    print(onboarding);
+    print(fileTf);
+  }
+
   @override
   Widget build(BuildContext context) {
+    startUp();
     switch (themeStyle) {
       case 'material':
         return Scaffold(
